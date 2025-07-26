@@ -18,3 +18,4 @@ def maximumUniqueSubarray(nums):
     return max_score
 
 print(maximumUniqueSubarray([1, 2, 3, 2, 1, 4, 5]))
+print(maximumUniqueSubarray([1, 2, 3, 2, 1, 4, 5]))  # Output should be 10
