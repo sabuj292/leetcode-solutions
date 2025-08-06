@@ -12,3 +12,15 @@ class Solution(object):
         
         return n - max_len
 
+
+
+
+
+
+# class Solution(object):
+#     def minRemoval(self, nums, k):
+#         """
+#         :type nums: List[int]
+#         :type k: int
+#         :rtype: int
+#         """©leetcode

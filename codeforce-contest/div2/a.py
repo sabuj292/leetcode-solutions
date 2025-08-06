@@ -29,3 +29,4 @@ def solve():
         print(max(total_sum, mex1 + mex2))
 
 solve()
+ 

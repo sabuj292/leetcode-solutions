@@ -4,24 +4,14 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        slist = []
-        result = set()
-        if not s:
-            return 0
-        count = 0
-        for ch in s:
-            if ch not in slist:
-                slist.append(ch)
-                count += 1
-            else:
-                result.add(count)
-                slist = []
-                slist.append(ch)
-                count = 1
-        result.add(count)
-
-        return max(result)
-
-sol = Solution()
-print(sol.lengthOfLongestSubstring("pwwkew"))
-print(sol.lengthOfLongestSubstring("dvdf"))
+        seen = set()
+        left = 0
+        max_len = 0
+        
+        for right in range(len(s)):
+            while s[right] in seen:
+                seen.remove(s[left])
+                left += 1
+            seen.add(s[right])
+            max_len = max(max_len, right - left + 1)
+        return max_len
