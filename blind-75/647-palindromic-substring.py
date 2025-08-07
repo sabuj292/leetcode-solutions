@@ -1,47 +1,8 @@
-# def countSubstrings(s):
-#     count = 0
-    
-#     for center in range(len(s)):
-#         # odd-length palindroms
-#         l, r = center, center
-        
-#         while l >= 0 and r < len(s) and s[l] == s[r]:
-#             count += 1
-#             l -= 1
-#             r += 1
-            
-#         # Even length palindroms
-#         l, r = center, center + 1
-#         while l >= 0 and r < len(s) and s[l] == s[r]:
-#             count += 1
-#             l -= 1
-#             r -= 1
-            
-#         return count
-    
-# #  Test Cases
-# test_cases = [
-#     "a",         # only 1 character → 1 palindrome
-#     "aa",        # "a", "a", "aa" → 3
-#     "aba",       # "a", "b", "a", "aba" → 4
-#     "abc",       # "a", "b", "c" → 3
-#     "aaa",       # "a", "a", "a", "aa", "aa", "aaa" → 6
-#     "abba",      # "a", "b", "b", "a", "bb", "abba" → 6
-#     "racecar",   # full palindrome + sub-parts → 10
-#     "abcd",      # All different → 4
-#     "aabaa"      # Try yourself: how many? → 9
-# ]
-
-# # 🖨 Print test results
-# for s in test_cases:
-#     result = countSubstrings(s)
-#     print(f"Input: '{s}' Palindromic Substrings: {result}")
-
-
 def countSubstrings(s):
     count = 0
     n = len(s)
     
+    #  in the following total center = 2 * n -1
     for center in range(2 * n - 1):
         left = center // 2
         right = left + (center % 2)
@@ -67,3 +28,49 @@ test_cases = [
 
 for s in test_cases:
     print(f"Input: '{s}' Palindromic Substrings: {countSubstrings(s)}")
+
+
+
+# Problem Solving Approach: Expand around the center
+
+"""
+There are two kinds of centers:
+
+    Centers on a character — for odd-length palindromes
+
+    Centers between characters — for even-length palindromes
+"""
+
+"""
+   s = "abc"
+index:   0   1   2
+         a   b   c
+        ^   ^   ^
+
+Possible positions:
+
+    👉 Odd-length centers (on characters):
+Center on a (index 0)
+
+Center on b (index 1)
+
+Center on c (index 2)
+
+✅ Total = 3 centers
+
+👉 Even-length centers (between characters):
+Between a and b → index 0.5
+
+Between b and c → index 1.5
+
+✅ Total = 2 centers
+
+    🎯 Total Centers = 3 (odd) + 2 (even) = 5
+And for any string of length n, this pattern always happens:
+
+n odd-length centers
+
+n - 1 even-length centers
+
+
+"""
