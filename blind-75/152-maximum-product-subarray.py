@@ -14,6 +14,22 @@ def maxProduct(nums):
         
     return result
 
+
+# Efficient Solution
+
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        nums_reversed = nums[::-1]
+
+        for i in range(1, len(nums)):
+            if nums[i-1] != 0:
+                nums[i] *= nums[i-1]
+            
+            if nums_reversed[i-1] != 0:
+                nums_reversed[i] *= nums_reversed[i-1]
+        
+        return max(nums + nums_reversed)
+
 # Solution BreakDown:
 
 """
