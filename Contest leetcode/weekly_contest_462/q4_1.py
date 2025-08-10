@@ -127,7 +127,7 @@ class Solution:
             best = None
             for cnt in profiles_by_len[length]:
                 cand = min_pal_from_counts(cnt)
-                if best is None or int(cand) < int(best)):
+                if best is None or int(cand) < int(best):
                     best = cand
             if best is not None:
                 return int(best)
@@ -136,3 +136,4 @@ class Solution:
 
 print(Solution().nextSpecialPalindrome(2))    # 22
 print(Solution().nextSpecialPalindrome(33))
+
